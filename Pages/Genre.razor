@@ -1,0 +1,44 @@
+﻿@page "/genre"
+@using Model
+@using webProject1.NewFolder1
+@inject MovieService service
+
+
+
+
+@if (movieGenreRequest != null)
+{
+    <div class="row">
+        <h3>List of all the genres for movies </h3>
+        @foreach (var item in movieGenreRequest)
+        {
+            <div class="col-6">@item.id</div>
+            <div class="col-6">@item.name</div>
+        }
+    </div>
+}
+
+@if (tvGenreRequest != null)
+{
+    <div class="row">
+        <h3>List of all the genres for tv shows </h3>
+        @foreach (var item in tvGenreRequest)
+        {
+            <div class="col-6">@item.id</div>
+            <div class="col-6">@item.name</div>
+        }
+    </div>
+}
+
+@code {
+    public string movieTitle { get; set; }
+    public IEnumerable<Model.Genre> movieGenreRequest { get; set; }
+    public IEnumerable<Model.Genre> tvGenreRequest { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        movieGenreRequest = await service.GetMovieGenreAsync();
+        tvGenreRequest = await service.GetTVShowsGenreAsync();
+        //movieTitle = await service.GetMovieIdAsync();
+    }
+}
