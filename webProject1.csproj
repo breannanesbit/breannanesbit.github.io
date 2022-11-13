@@ -12,4 +12,8 @@
     <PackageReference Include="Microsoft.Authentication.WebAssembly.Msal" Version="6.0.10" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\css\NewFolder\" />
+  </ItemGroup>
+
 </Project>
